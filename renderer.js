@@ -6,9 +6,16 @@
  * to expose Node.js functionality from the main process.
  */
 
+const img = new Image()
 imgInp.onchange = evt => {
-    const [file] = imgInp.files
+    var [file] = imgInp.files
     if (file) {
-      blah.src = file.path;
+        blah.src = file.path;
+        img.src = blah.src;
+        console.log(img.naturalWidth, img.naturalHeight);
+        blah.width=800;
+        blah.height=img.naturalHeight/(img.naturalWidth/800);
+        
     }
-  }
+}
+
