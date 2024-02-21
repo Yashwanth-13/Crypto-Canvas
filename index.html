@@ -8,14 +8,11 @@
     <title>Image editor</title>
   </head>
   <body>
-    <h1></h1>
-    <form runat="server">
-      <input accept="image/*" type='file' id="imgInp" />
-      <img id="blah" src="#" alt="your image" />
-    </form>
-    
+      <input accept="image/*" type='file'name='imgInp' id="imgInp" /><label id="file-input-label" for="imgInp"
+      >Select a File</label>
+      <img id="blah" src="" width="800"  />
+  
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
+      <script src="./renderer.js"></script>
   </body>
 </html>
