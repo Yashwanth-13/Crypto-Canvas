@@ -5,10 +5,11 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
-
-var img = new Image()
+let imgInp = document.getElementById("imgInp")
+let blah = document.getElementById("blah")
+let img = new Image()
 imgInp.onchange = evt => {
-    var [file] = imgInp.files
+    let [file] = imgInp.files
     if (file) {
         blah.src = file.path;
         img.src = blah.src;
