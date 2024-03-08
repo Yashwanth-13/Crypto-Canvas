@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
     <link href="./styles.css" rel="stylesheet">
     <title>Image editor</title>
   </head>
@@ -11,7 +10,7 @@
       <input accept="image/*" type='file' name='imgInp' id="imgInp" /><label id="file-input-label" for="imgInp"
       >Select a File</label>
       <img id="blah" src="" width="800"  />
-  
+      <button id="download" onclick="download()">Download</button>
 
       <script src="./renderer.js"></script>
   </body>

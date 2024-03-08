@@ -17,7 +17,15 @@ imgInp.onchange = evt => {
         
     }
 }
-
-function fun(){
-    console.log('asdf');
+function download() {
+    let canvas = document.createElement("canvas");
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    let ctx = canvas.getContext("2d");
+    ctx.filter = "invert(0%)";
+    ctx.drawImage(img, 0, 0);
+    let a = document.createElement("a");
+    a.href = canvas.toDataURL();
+    a.download = "image.png";
+    a.click();
 }
