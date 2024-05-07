@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <style>
+        .b1 {
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .b1:hover {
+            background: #2980b9;
+        }
+        .b1 img {
+            width: 40%;
+            height: 45%;
+            object-fit: contain;
+        }
+    </style>
+    <link rel="stylesheet" href="./editor.css">
+</head>
+<body>
+    <header>
+        <h1>Image Editor</h1>
+    </header>
+    <img id="background-image" src="Crypto.jpeg">
+    <main>
+        <div id="picture-box">  
+            <canvas id="canvas" width="800" height="600" ></canvas><br>
+            <input accept="image/*" type='file' name='imgInp' id="imgInp" onchange="bring()"/>
+            <label id="file-input-label" for="imgInp">select image</label><button onclick="load()">load</button>
+            <img id="blah" src="" width="800" style="display: none ;" />
+            <button id="download" onclick="download()">Download</button>
+        </div>
+
+        <div id="tool-box">
+            <button class="b1" onclick="crop()"><img src="images/crop.png" alt="Crop"></button>
+            <br><br>
+            <button class="b1" onclick="rotate()"><img src="images/rotate.png" alt="Rotate"></button>
+            <br><br>
+            <button class="b1" onclick="mirror()"><img src="images/mirror.png" alt="Flip"></button>
+            <br><br>
+            <button class="b1" onclick="mirrorup()"><img src="images/mirrorup.png" alt="Flipup"></button>
+            <br><br>
+            <button onclick="undo()">Undo</button>
+            <button onclick="reset()">reset</button>
+            <button onclick="save()">save</button>
+        </div>
+        
+    </main>
+    <script src="./renderer.js"></script>
+    
+</body>
+</html>

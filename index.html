@@ -1,17 +1,150 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <link href="./styles.css" rel="stylesheet">
-    <title>Image editor</title>
-  </head>
-  <body>
-      <input accept="image/*" type='file' name='imgInp' id="imgInp" /><label id="file-input-label" for="imgInp"
-      >Select a File</label>
-      <img id="blah" src="" width="800"  />
-      <button id="download" onclick="download()">Download</button>
-
-      <script src="./renderer.js"></script>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRYPTO CANVAS</title>
+    <style>
+        h1 {
+            text-align: center;
+            text-shadow: 4px 3px rgb(15, 1, 204);
+            font-size: xxx-large;
+            text-decoration: underline;
+        }
+        h2 {
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: xx-large;
+            text-shadow: 1px 3px #072403;
+            color: rgb(255, 255, 255);
+        }
+        h3 {
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: x-large;
+            color: #95ff00;
+            text-shadow: 1px 2px #000000;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0; padding: 0;
+            overflow: hidden;
+            background-size: cover;
+            transition: transform 0.5s ease-in-out;
+            text-align: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            color: #fff;
+        }
+        header {
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            padding: 1px;
+            text-align: center;
+        }
+        main{
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgb(26, 26, 173);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .button3 {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button3 img {
+            width: auto;
+            height: auto;
+            object-fit: none;
+        }
+        .button1 {
+        display: inline-block;
+        border-radius: 10px; background-color: #009590;
+        border:3px solid #000000; color: #FFFFFF;
+        text-align: center; text-shadow: 3px 3px black;
+        font-size: 28px; padding: 20px;
+        width: auto; transition: all 0.7s;
+        cursor: pointer; margin: 5px;
+        }
+        .button1 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        }
+        .button1 span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+        }   
+        .button1:hover span {
+        padding-right: 25px;
+        
+        }
+        
+        .button1:hover span:after {
+        opacity: 1;
+        right: 0;
+        }
+        .ribbon {
+            background-color: #3c3c3c; 
+            color: #aaf40b; text-shadow: 3px 4px #000000;
+            padding: 5px 10px;
+            font-size: 22px;
+            font-weight: bold;
+            transform: rotate(0deg);
+            transform-origin: top right;
+        }
+        </style>
+</head>
+<body>
+    <header>
+       <h1><b>CRYPTO CANVAS</b></h1> 
+    </header>
+    <img id="background-image" src="images/Crypto.jpeg">
+    <div class="ribbon"><i><marquee>Welcome to the Crypto-Canvas Application where you can transform your photos into masterpieces and more..</marquee></i></div>
+        <h3><i></i></h3>
+        
+        <h2>Choose any Operation from the following</h2>
+        <button onclick="Editor()" class="button1" style="vertical-align:middle"><span><b>CANVAS</b></span></button>
+        <button onclick="Steganography()" class="button1" style="vertical-align: middle"><span><b>STEGAN</b></span></button>
+        <script>
+            function Editor(){
+                document.body.style.opacity = '0';
+                setTimeout(function () {
+                    window.location.href='Editor.html';},500);
+            }
+            function Steganography(){
+                document.body.style.opacity = '0';
+                setTimeout(function () {
+                    window.location.href='Steganography.html';},500);
+            }
+        </script>
+</body>
 </html>

@@ -1,0 +1,98 @@
+0<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <style>
+        .image-list-item {
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+            margin-right: 20px; /* Add space between image effects */
+        }
+
+        .image-list-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-list-item:hover img {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        .grayscale-effect {
+            filter: grayscale(100%);
+        }
+
+        .blur-effect {
+            filter: blur(5px);
+        }
+
+        .sepia-effect {
+            filter: sepia(100%);
+        }   
+        .invert-effect:hover img {
+            filter: invert(100%); /* Invert effect */
+        }
+
+        .saturate-effect:hover img {
+            filter: saturate(200%); /* Increased saturation */
+        }
+
+        .hue-rotate-effect:hover img {
+            filter: hue-rotate(180deg); /* Hue rotation */
+        }
+    </style>
+    <link rel="stylesheet" href="./editor.css">
+</head>
+<body>
+    <header>
+        <h1>Image Editor</h1>
+    </header>
+    <img id="background-image" src="Crypto.jpeg">
+    <main>
+        <div id="picture-box">  
+            <canvas id="canvas" width="800" height="600" ></canvas><br>
+            <input accept="image/*" type='file' name='imgInp' id="imgInp" onchange="bring()"/>
+            <label id="file-input-label" for="imgInp">select image</label><button onclick="load()">load</button>
+            <img id="blah" src="" width="800" style="display: none ;" />
+            <button id="download" onclick="download()">Download</button>
+        </div>
+
+        <div class="image-list">
+            <div class="image-list-item">
+                <img src="images/greyscale.png" alt="Image 1" class="grayscale-effect">
+            </div><br>
+            <div class="image-list-item">
+                <img src="images/blur.png" alt="Image 2" class="blur-effect">
+            </div><br>
+            <div class="image-list-item">
+                <img src="images/sepia.png" alt="Image 3" class="sepia-effect">
+            </div>
+            <br>
+            <div class="image-list-item">
+                <img src="images/invert.png" alt="Image 3" class="invert-effect">
+            </div><br>
+            <div class="image-list-item">
+                <img src="images/saturated.png" alt="Image 3" class="saturated-effect">
+            </div><br>
+            <div class="image-list-item">
+                <img src="images/sepia.png" alt="Image 3" class="sepia-effect">
+            </div><br>
+            <div class="image-list-item">
+                <img src="images/huerotate.png" alt="Image 3" class="hue-rotate-effect">
+            </div><br>
+            <button onclick="undo()">undo</button>
+            <button onclick="reset()">reset</button>
+            <button onclick="save()">save</button>
+        
+    </main>
+    <script src="./renderer.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <style>
+        .image-button {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .image-button:hover {
+            background-color: #94a7b4;
+        }
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="./editor.css">
+</head>
+<body>
+    <header>
+        <h1>Image Editor</h1>
+    </header>
+    <img id="background-image" src="Crypto.jpeg">
+    <main>
+        <div id="picture-box">  
+            <canvas id="canvas" width="800" height="600" ></canvas><br>
+            <input accept="image/*" type='file' name='imgInp' id="imgInp" onchange="bring()"/>
+            <label id="file-input-label" for="imgInp">select image</label><button onclick="load()">load</button>
+            <img id="blah" src="" width="800" style="display: none ;" />
+            <button id="download" onclick="download()">Download</button>
+        </div>
+
+        <div id="tool-box">
+            
+            <button class="image-button" onclick="document.getElementById('fileInput').click()">
+                <img src="images/pop.png" alt="pop" width="140" height="120">
+            </button>
+            <input type="file" id="fileInput" accept="image/*" onchange="handleFileSelect(event)">
+            <div id="preview"></div>
+
+            <br><br><br>
+            <button onclick="undo()">Undo</button>
+            <button onclick="reset()">reset</button>
+            <button onclick="save()">save</button>
+        </div>
+        
+    </main>
+    <script src="./renderer.js"></script>
+    
+</body>
+</html>
