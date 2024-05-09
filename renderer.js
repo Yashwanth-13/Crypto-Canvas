@@ -42,7 +42,6 @@ if(change){
 loadfilter();
 
 change=false
-
 let source=localStorage.getItem("image")
 //console.log(source)
 if(source){
@@ -52,10 +51,17 @@ if(source){
         load()
     }
 }
+if(frompop){
+    //console.log(sactive);
+    img.src = frompop;
+    img.onload = function () {
+        load()
+    }
 
+}
 function bring(){
     let [file] = imgInp.files
-    // console.log(document.getElementById("imgInp").files[0].path)
+    //console.log(document.getElementById("imgInp").files[0].path)
     if (file) {
         //console.log("file")
         img.src = document.getElementById("imgInp").files[0].path;
@@ -69,20 +75,23 @@ function bring(){
 function load(){
     width = img.naturalWidth;
     height = img.naturalHeight;
-    //console.log(width,height);
+    height1=height
+    width1=width
     if(height!=600 && width!=800){
-        height1=height
-        width1=width
         ratio=width/height
         if(ratio>1){
             width=800;
             height=800/ratio;
+            canvas.width=width;
+            canvas.height=height;
             ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
             //console.log(width,height)
         }
         else{
             height=600
             width=600*ratio
+            canvas.width=width;
+            canvas.height=height;
             ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
             //console.log(width,height)
         }
@@ -245,10 +254,8 @@ canvas.addEventListener("mousemove", function (e) {
                 pervmousey=mousenowy;
                 v1=false;
             }
-            console.log(mousenowx,mousenowy,x,y,popwidth,popheight)
             x+=mousenowx-pervmousex;
             y+=mousenowy-pervmousey;
-            console.log(x,y)
             secondpic();
             pervmousex=mousenowx;
             pervmousey=mousenowy;
@@ -265,3 +272,13 @@ window.onbeforeunload = function() {
     if(sactive===false)
     localStorage.clear();
 };
+let imagee=new Image();
+function popsave(){
+    let imageee = canvas.toDataURL();
+    var destinationImage = new Image;
+    destinationImage.src = imageee;
+    destinationImage.onload = function(){
+        localStorage.setItem("destinationImage",destinationImage);
+    };
+    save()
+}
