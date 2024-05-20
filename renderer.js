@@ -12,7 +12,9 @@ let mousedown=false;
 let mousenowx=0,mousenowy=0;
 let x=0,y=0;
 
+let frompop=new Image();
 let imgInp = document.getElementById("imgInp")
+let imgpop1 = document.getElementById("imgpop1")
 let canvas= document.getElementById("canvas")
 let ctx= canvas.getContext("2d")
 let img = new Image(),imgpop = new Image();
@@ -24,9 +26,13 @@ let sactive=false
 let change=false
 canvas.style.background = "black";
 sactive=false
+let picturebox=document.getElementById("picture-box");
+let returns=localStorage.getItem("returns");
+console.log(returns);
 
 let blur=0,brightness=100,contrast=100,grayscale=0,hueRotate=0,invert=0,opacity=0,saturate=100,sepia=0;
 change=localStorage.getItem("change");
+console.log(change);
 if(change){
     //console.log("ok ");
     blur=localStorage.getItem("blur");
@@ -38,26 +44,30 @@ if(change){
     opacity=localStorage.getItem("opacity");
     saturate=localStorage.getItem("saturate");
     sepia=localStorage.getItem("sepia");
+    console.log(grayscale)
 }
 loadfilter();
+
 
 change=false
 let source=localStorage.getItem("image")
 //console.log(source)
-if(source){
+if(returns==1){
     //console.log(sactive);
     img.src = source;
     img.onload = function () {
         load()
     }
 }
-if(frompop){
+else if(returns==2){
     //console.log(sactive);
+    frompop=localStorage.getItem("destinationImage");
     img.src = frompop;
+    console.log(img.src,"\n--------------------------",frompop);
     img.onload = function () {
+        console.log("ok")
         load()
     }
-
 }
 function bring(){
     let [file] = imgInp.files
@@ -75,27 +85,28 @@ function bring(){
 function load(){
     width = img.naturalWidth;
     height = img.naturalHeight;
-    height1=height
-    width1=width
-    if(height!=600 && width!=800){
-        ratio=width/height
-        if(ratio>1){
-            width=800;
-            height=800/ratio;
-            canvas.width=width;
-            canvas.height=height;
-            ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
-            //console.log(width,height)
-        }
-        else{
-            height=600
-            width=600*ratio
-            canvas.width=width;
-            canvas.height=height;
-            ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
-            //console.log(width,height)
-        }
+    height1=height;
+    width1=width;
+    ratio=width/height
+    if(ratio>1){
+        width=800;
+        height=800/ratio;
+        canvas.width=width;
+        canvas.height=height;
+        loadfilter();
+        ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+        //console.log(width,height)
     }
+    else{
+        height=600
+        width=600*ratio
+        canvas.width=width;
+        canvas.height=height;
+        ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+        console.log(ctx.filter)
+        //console.log(width,height)
+    }
+    localStorage.setItem("image",img.src);
 }
 function download() {
     let canvas = document.createElement("canvas");
@@ -112,41 +123,50 @@ function download() {
 }
 
 function applyFilter(){
+    localStorage.setItem("returns",1);
     sactive=true;
     window.location.href='Filters.html';
 }
 function cropImage(){
+    localStorage.setItem("returns",1);
     sactive=true;
     window.location.href='Crop.html';
 }
 function save(){
+    localStorage.setItem("returns",1);
     sactive=true;
     localStorage.setItem("image",img.src);
     window.location.href='Editor.html';
 }
 function effects(){
-    sactive=true;
-    window.location.href='Effects.html';
+    localStorage.setItem("returns",1);
+    picturebox.style.width="20%";
+    // sactive=true;
+    // window.location.href='Effects.html';
 }
 function pictureonpicture(){
+    localStorage.setItem("returns",1);
     sactive=true;
     window.location.href='POP.html';
 }
 function text(){
+    localStorage.setItem("returns",1);
     sactive=true;
     window.location.href='Text.html';
 }
 function secondpic(){
-    let [file] = imgInp.files
+    console.log("ok")
+    let [file] = imgpop1.files
     if (file) {
-        imgpop.src = document.getElementById("imgpop").files[0].path;
+        console.log("ok")
+        imgpop.src = document.getElementById("imgpop1").files[0].path;
         imgpop.onload = function () {
+            console.log("ok")
             ctx.clearRect(0,0,canvas.width,canvas.height);
             load(); 
             popwidth = imgpop.naturalWidth;
             popheight = imgpop.naturalHeight;
             //console.log(popwidth,popheight);
-            if(popheight!=600 && popwidth!=800){
                 height1=popheight
                 width1=popwidth
                 ratio=popwidth/popheight
@@ -162,7 +182,7 @@ function secondpic(){
                     ctx.drawImage(imgpop, 0, 0,width1,height1,x,y,popwidth,popheight);
                     //console.log(popwidth,popheight)
                 }
-            }
+            
         }
     }
 
@@ -272,13 +292,16 @@ window.onbeforeunload = function() {
     if(sactive===false)
     localStorage.clear();
 };
-let imagee=new Image();
+let imageee=new Image();
 function popsave(){
     let imageee = canvas.toDataURL();
-    var destinationImage = new Image;
+    let destinationImage = new Image();
     destinationImage.src = imageee;
     destinationImage.onload = function(){
-        localStorage.setItem("destinationImage",destinationImage);
+        console.log(destinationImage);
+        localStorage.setItem("destinationImage",destinationImage.src);
     };
-    save()
+    localStorage.setItem("returns",2);
+    sactive=true;
+    window.location.href='Editor.html';
 }
