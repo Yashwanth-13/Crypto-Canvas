@@ -102,6 +102,7 @@ function load(){
         width=600*ratio
         canvas.width=width;
         canvas.height=height;
+        loadfilter();
         ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
         console.log(ctx.filter)
         //console.log(width,height)
