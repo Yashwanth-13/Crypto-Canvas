@@ -60,7 +60,7 @@ function bring(){
         //console.log(img.src);
         img.onload = function () {
             ctx.clearRect(0,0,canvas.width,canvas.height);
-            load(img)
+            load(img);
         }
     }
 }
@@ -89,23 +89,22 @@ function load(){
     }
     localStorage.setItem("image",img.src);
 }
-function download() {
-    let canvas = document.createElement("canvas");
-    canvas.width = img.naturalWidth;
-    canvas.height = img.naturalHeight;
-    let ctx = canvas.getContext("2d");
-    ctx.filter = "blur("+blur+"px)"+"brightness("+brightness+"%)"+"contrast("+contrast+"%)"+"grayscale("+grayscale+"%)"+"invert("+invert+"%)"+ "hue-rotate("+hueRotate+"deg)"+"saturate("+saturate+"%)"+"sepia("+sepia+"%)";
-    //console.log(blur,brightness,contrast,grayscale,hueRotate,invert,opacity,saturate,sepia);
-    ctx.drawImage(img, 0, 0);
-    let a = document.createElement("a");
-    a.href = canvas.toDataURL();
-    a.download = "image.png";
-    a.click();
-}
 
 function save(){
+    cropimage();
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    canvas.width=ow;
+    canvas.height=oh;
+    console.log(canvas.width,canvas.height);
+    ctx.drawImage(img,ox*r,oy*r1,ow*r,oh*r1,0,0,ow,oh);
+    let imageee = canvas.toDataURL();
+    let destinationImage = new Image();
+    destinationImage.src = imageee;
+    destinationImage.onload = function(){
+        localStorage.setItem("destinationImage",destinationImage.src);
+    };
+    localStorage.setItem("returns",2);
     sactive=true;
-    localStorage.setItem("image",img.src);
     window.location.href='Editor.html';
 }
 
@@ -146,6 +145,12 @@ let pervmousex=mousenowx,pervmousey=mousenowy;
 canvas.addEventListener("mousemove", function (e) {
     [mousenowx,mousenowy]=getMousePosition(canvas, e);
 });
+
+
+const path2 = new Path2D();
+// I moved a bit the arc so that the filter is better visible
+
+
 let drag1=false,drag2=false,drag3=false,drag4=false;
 canvas.addEventListener("mousemove", function (e) {
     if(mousedown){
@@ -153,11 +158,9 @@ canvas.addEventListener("mousemove", function (e) {
         if(ox+ow>mousenowx && mousenowx>ox && oy+5>mousenowy && mousenowy>oy){
             drag1=true;
         }
-        console.log(oy+oh,mousenowy,oy+oh-5)
         if( oy+oh>mousenowy && mousenowy>oy+oh-5){
             drag2=true;
         }
-        console.log(ox+ow,mousenowx,ox)
         if(ox+5>mousenowx && mousenowx>ox && oy+oh>mousenowy && mousenowy>oy){
             drag3=true;
         }
@@ -171,30 +174,27 @@ canvas.addEventListener("mousemove", function (e) {
         }
         movex=mousenowx-pervmousex;
         movey=mousenowy-pervmousey;
-        console.log(mousenowx,mousenowy)
-        // console.log(movex,movey)
         pervmousex=mousenowx;
         pervmousey=mousenowy;
         
         if(drag1){
             ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+            console.log("ok")
             oh-=movey;
             oy+=movey;
+            cropimage();
 
             ctx.fillRect(ox,oy,ow,5);
 
             ctx.fillRect(ox,oh-5+oy,ow,5);
             ctx.fillRect(ox,oy,5,oh);
             ctx.fillRect(ox+ow-5,oy,5,oh);
-            // console.log(oy+5,oy+movey)
         }
         if(drag2){
             ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+            cropimage();
             // oh=height+movey;
             oh+=movey;
-            console.log(oy,oh);
 
             ctx.fillRect(ox,oy,ow,5);
 
@@ -205,7 +205,7 @@ canvas.addEventListener("mousemove", function (e) {
         }
         if(drag3){
             ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+            cropimage();
 
             ox+=movex;
             ow-=movex;
@@ -219,7 +219,7 @@ canvas.addEventListener("mousemove", function (e) {
         }
         if(drag4){
             ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+            cropimage();
 
             ow+=movex;
 
@@ -246,6 +246,25 @@ window.onbeforeunload = function() {
 };
 
 let ox=0,oy=0,ow=0,oh=0;
+let r=0,r1=0,r2=0;
+
+function cropimage(){
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // ctx.filter = `brightness(${100}%)`;
+    // ctx.drawImage(img, 0, 0,width1,height1,ox,oy,ow,oh);
+
+    ctx.filter = `brightness(${50}%)`;
+    ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+
+    ctx.filter = `none`;
+
+    r=width1/width;
+    r1=height1/height;
+    
+    ctx.drawImage(img,ox*r,oy*r1,ow*r,oh*r1,ox,oy,ow,oh);
+}
+
 function crop(){
     let width=canvas.width;
     let height=canvas.height;
