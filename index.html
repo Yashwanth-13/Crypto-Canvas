@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRYPTO CANVAS</title>
     <style>
+        #center {
+
+            /*justify-content: center;*/
+        }
         h1 {
             text-align: center;
             text-shadow: 4px 3px rgb(15, 1, 204);
@@ -27,12 +30,15 @@
             text-shadow: 1px 2px #000000;
         }
         body {
+            background-image: url("./images/wavy.png");
             font-family: 'Arial', sans-serif;
             margin: 0; padding: 0;
             overflow: hidden;
             background-size: cover;
             transition: transform 0.5s ease-in-out;
             text-align: center;
+            display: flex;
+            align-items: center;
             justify-content: center;
             height: 100vh;
         }
@@ -124,27 +130,25 @@
         </style>
 </head>
 <body>
-    <header>
-       <h1><b>CRYPTO CANVAS</b></h1> 
-    </header>
-    <img id="background-image" src="images/Crypto.jpeg">
-    <div class="ribbon"><i><marquee>Welcome to the Crypto-Canvas Application where you can transform your photos into masterpieces and more..</marquee></i></div>
-        <h3><i></i></h3>
-        
-        <h2>Choose any Operation from the following</h2>
-        <button onclick="Editor()" class="button1" style="vertical-align:middle"><span><b>CANVAS</b></span></button>
-        <button onclick="Steganography()" class="button1" style="vertical-align: middle"><span><b>STEGAN</b></span></button>
-        <script>
-            function Editor(){
-                document.body.style.opacity = '0';
-                setTimeout(function () {
-                    window.location.href='Editor.html';},500);
-            }
-            function Steganography(){
-                document.body.style.opacity = '0';
-                setTimeout(function () {
-                    window.location.href='Steganography.html';},500);
-            }
-        </script>
+<!--    <div class="ribbon"><i><marquee>Welcome to the Crypto-Canvas Application where you can transform your photos into masterpieces and more..</marquee></i></div>-->
+
+
+    <div id="center">
+        <h3>Crypto Canvas</h3>
+        <button onclick="Editor()" class="button1" style="vertical-align:middle"><span>Canvas</span></button>
+        <button onclick="Steganography()" class="button1" style="vertical-align: middle"><span>Steganography</span></button>
+    </div>
+    <script>
+        function Editor(){
+            document.body.style.opacity = '0';
+            setTimeout(function () {
+                window.location.href='./html/Editor.html';},500);
+        }
+        function Steganography(){
+            document.body.style.opacity = '0';
+            setTimeout(function () {
+                window.location.href='./steg/stego.html';},500);
+        }
+    </script>
 </body>
 </html>

@@ -71,19 +71,20 @@
                 <input accept="image/*" type='file' name='imgInp' id="imgInp" />
                 <label id="file-input-label" for="imgInp">Select a File</label>
                 <img id="blah" src="" width="800"/>
+                <img id="cover" src=""/>
                 <button onclick="undo()"><i>Undo</i></button>
                 <button onclick="redo()"><i>Redo</i></button>
             </div>
             <div id="tool-box">
                 <button onclick="AddData()" class="button1"><b>Add-Data</b></button>
                 <button onclick="Encryptdata()" class="button1"><b>Encrypt</b></button>
-                <button onlick="Save()" class="button1"><b>SAVE</b></button>
+                <button onclick="Save()" class="button1"><b>SAVE</b></button>
                 <button onclick="Share()" class="button1"><b>Share</b></button>
-                <button id="Download" onclick="download()" class="button1"><b>Download</b></button>
+                <button id="download" onclick="download()" class="button1"><b>Download</b></button>
             </div>
         </main>
     
-    <script src="./renderer.js">
+    <script src="../renderer.js">
         let canvas = document.getElementById("canvas");
         let history = [];
         let historyIndex = -1;

@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Editor</title>
     <style>
-        .image-button {
-            display: inline-block;
-            padding: 10px 20px;
+        .b1 {
             color: #fff;
             border: none;
+            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            margin-right: 10px;
         }
-        .image-button:hover {
-            background-color: #94a7b4;
+        .b1:hover {
+            background: #2980b9;
         }
-        input[type="file"] {
-            display: none;
+        .b1 img {
+            width: 40%;
+            height: 45%;
+            object-fit: contain;
         }
     </style>
-    <link rel="stylesheet" href="./editor.css">
+    <link rel="stylesheet" href="../css/editor.css">
 </head>
 <body>
     <header>
@@ -38,20 +40,21 @@
         </div>
 
         <div id="tool-box">
-            
-            <input accept="image/*" type='file' name='imgpop1' id="imgpop1" onchange="secondpic()"/>
-            <label id="file-input-label" for="imgpop1">
-                <img src="images/pop.png" alt="pop" width="140" height="120">
-            </label>
-
-            <br><br><br>
+            <button class="b1" onclick="crop()"><img src="../images/crop.png" alt="Crop"   ></button>
+            <br><br>
+            <button class="b1" onclick="rotate()"><img src="../images/rotate.png" alt="Rotate"></button>
+            <br><br>
+            <button class="b1" onclick="mirror()"><img src="../images/mirror.png" alt="Flip"></button>
+            <br><br>
+            <button class="b1" onclick="mirrorup()"><img src="../images/mirrorup.png" alt="Flipup"></button>
+            <br><br>
             <button onclick="undo()">Undo</button>
             <button onclick="reset()">reset</button>
-            <button onclick="popsave()">save</button>
+            <button onclick="save()">save</button>
         </div>
         
     </main>
-    <script src="./renderer.js"></script>
+    <script src="../js/crop.js"></script>
     
 </body>
 </html>
