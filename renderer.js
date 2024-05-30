@@ -139,6 +139,9 @@ function save(){
     localStorage.setItem("image",img.src);
     window.location.href='Editor.html';
 }
+function back(){
+    window.location.href='Editor.html';
+}
 function effects(){
     localStorage.setItem("returns",1);
     picturebox.style.width="20%";

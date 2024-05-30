@@ -16,9 +16,8 @@
         <div id="picture-box">  
             <canvas id="canvas" width="800" height="800" ></canvas><br>
             <input accept="image/*" type='file' name='imgInp' id="imgInp" onchange="bring()"/>
-            <label id="file-input-label" for="imgInp">select image</label><button onclick="load()">load</button>
+            <div class="selector"><label id="file-input-label"  for="imgInp">Select Image</label></div>
             <img id="blah" src="" width="800" style="display: none ;" />
-            <button id="download" onclick="download()">Download</button>
         </div>
 
         <div id="tool-box"><p style="color: black;">blur</p>
@@ -33,8 +32,6 @@
             <input type="range" min="0" max="100" value="0"  id="hue-rotate" onchange="huerotate1()" class="hue-rotate">
             <p style="color: black;">invert</p>
             <input type="range" min="0" max="100" value="0"  id="invert" onchange="invert1()" class="invert">
-            <p style="color: black;">opacity</p>
-            <input type="range" min="0" max="100" value="0"  id="opacity" onchange="opacity1()" class="opacity">
             <p style="color: black;">saturate</p>
             <input type="range" min="0" max="200" value="100"  id="saturate" onchange="saturate1()" class="saturate">
             <p style="color: black;">sepia</p>
