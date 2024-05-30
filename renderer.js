@@ -51,45 +51,13 @@ loadfilter();
 
 change=false
 let source=localStorage.getItem("image")
-<<<<<<< HEAD
 canvas.height=400;
 canvas.width=750;
 
 
 
-
-
-var temp=50;
-var button = document.getElementById('Button');
-
-button.addEventListener('click', onClick);
-
-function changeToWhite(data) {
-  for (var i = 0; i < data.length; i+=4) {
-    data[i] +=temp;
-    data[i+1] *=1;
-    data[i+2] +=temp;
-  }
-}
-
-function onClick() {
-  var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  
-  changeToWhite(imageData.data);
-
-  // Update the canvas with the new data
-  ctx.putImageData(imageData, 0, 0);
-}
-
-
-
-
-
-
-=======
 canvas.height=525;
 canvas.width=850;
->>>>>>> c55d4b4423a9adf3301d532186661b4602da0d70
 //console.log(source)
 if(returns==1){
     //console.log(sactive);
@@ -184,8 +152,8 @@ function back(){
 function effects(){
     localStorage.setItem("returns",1);
     picturebox.style.width="20%";
-    // sactive=true;
-    // window.location.href='Effects.html';
+    sactive=true;
+    window.location.href='Effects.html';
 }
 function pictureonpicture(){
     localStorage.setItem("returns",1);
@@ -343,3 +311,63 @@ function popsave(){
     sactive=true;
     window.location.href='Editor.html';
 }
+
+
+function warm  (){
+    
+}
+
+
+var temp=1.1;
+function minimum(a,b){
+    if(a>b)
+        return b;
+    else  return a;
+}
+
+function warm() {
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var data=imageData.data;
+    var r,b,g;
+  for (var i = 0; i < data.length; i+=4) {
+    r = data[i];
+    g = data[i + 1];
+    b = data[i + 2];
+    data[i] =minimum(r*temp,255);
+    data[i+1] =minimum(g*temp,255);
+  }
+    // Update the canvas with the new data
+    ctx.putImageData(imageData, 0, 0);
+  }
+  
+
+  function cool() {
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var data=imageData.data;
+    var r,b,g;
+  for (var i = 0; i < data.length; i+=4) {
+    r = data[i];
+    g = data[i + 1];
+    b = data[i + 2];
+    data[i+2] =minimum(b*temp,255);
+  }
+    // Update the canvas with the new data
+    ctx.putImageData(imageData, 0, 0);
+  }
+  
+function bmw() {
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    ctx.filter="grayscale(100%)"
+    ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+} 
+
+function red_er() {
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    ctx.filter="sepia(100%)"
+    ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+}
+  
+function theunwanted(){
+    
+}
+    
