@@ -2,23 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Editor</title>
     <style>
-        .image-button {
-            display: inline-block;
-            padding: 10px 20px;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .image-button:hover {
-            background-color: #94a7b4;
-        }
         input[type="file"] {
             display: none;
         }
@@ -31,7 +21,11 @@
         <div id="picture-box">  
             <canvas id="canvas" width="800" height="800" ></canvas><br>
             <input accept="image/*" type='file' name='imgInp' id="imgInp" onchange="bring()"/>
-            <div class="selector"><label id="file-input-label"  for="imgInp">Select Image</label></div>
+            <div class="btn-holder">
+                <div class="selector"><label id="file-input-label"  for="imgInp">Select Image</label></div>
+                <button class="btn btn-success bunch" onclick="popsave()" style="margin-left: 50%">SAVE</button>
+                <button class="btn btn-success bunch" onclick="back()" style="margin-left: 8px">GO BACK</button>
+            </div>
             <img id="blah" src="" width="800" style="display: none ;" />
         </div>
 

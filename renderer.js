@@ -117,6 +117,10 @@ function load(){
     localStorage.setItem("image",img.src);
 }
 function download() {
+    if (!img.src) {
+        alert("No Image to download")
+        return
+    }
     let canvas = document.createElement("canvas");
     canvas.width = img.naturalWidth;
     canvas.height = img.naturalHeight;
@@ -140,13 +144,18 @@ function cropImage(){
     sactive=true;
     window.location.href='Crop.html';
 }
-function save(){
+ function save(){
     localStorage.setItem("returns",1);
     sactive=true;
     localStorage.setItem("image",img.src);
     window.location.href='Editor.html';
 }
-function back(){
+ function back(){
+    if (img.src) {
+        localStorage.setItem("returns",1);
+        sactive=true
+        localStorage.setItem("image",img.src);
+    }
     window.location.href='Editor.html';
 }
 function effects(){
@@ -237,7 +246,7 @@ function loadfilter(){
     ctx.drawImage(img, 0, 0,width,height);
     //console.log(ctx.filter)
 }
-function reset(){
+ function reset(){
     blur=0,brightness=100,contrast=100,grayscale=0,hueRotate=0,invert=0,opacity=0,saturate=100,sepia=0;
     document.getElementById("blur").value=0;
     document.getElementById("brightness").value=100;
@@ -245,11 +254,9 @@ function reset(){
     document.getElementById("grayscale").value=0;
     document.getElementById("hue-rotate").value=0;
     document.getElementById("invert").value=0;
-    document.getElementById("opacity").value=0;
     document.getElementById("saturate").value=100;
-    document.getElementById("sepia").value=0;
-
     loadfilter();
+    back()
 }
 
 function getMousePosition(canvas, event) {

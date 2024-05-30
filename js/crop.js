@@ -272,6 +272,20 @@ function cropimage(){
     ctx.drawImage(img,ox*r,oy*r1,ow*r,oh*r1,ox,oy,ow,oh);
 }
 
+function back() {
+    if (img.src) {
+        localStorage.setItem("returns",1);
+        sactive=true
+        localStorage.setItem("image",img.src);
+    }
+    window.location.href = '../html/Editor.html'
+
+}
+
+function reset() {
+
+}
+
 function crop(){
     let width=canvas.width;
     let height=canvas.height;

@@ -50,6 +50,12 @@ main{
   transition-duration: 0.4s;
   cursor: pointer;
 }
+p {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #EED5C2;
+}
+
 .button1{
   margin-bottom: 20px;
   border-radius: 5px;
@@ -71,6 +77,10 @@ width: 50%; text-align: center; background-color: #030a23;
 color: #E8985E;  border: 3px solid #454847;
 }
 
+.slider {
+  accent-color: #d8823f;
+}
+
 .button2:hover {
   border-radius: 10px;
 }
@@ -83,13 +93,22 @@ color: #E8985E;  border: 3px solid #454847;
 width: 100%;
 }
 
+.btn-holder {
+  display: flex;
+}
+
+.bunch {
+  border-radius: 5px;
+  font-size: 15px;
+}
+
 .selector {
-  font-size: 20px;
+    font-size: 20px;
    color: #dff3e4;
    font-variant: all-petite-caps;
    margin: 5px;
    text-align: center;
    width: 20%;
    border-radius: 5px;
-   background-color: #A9714B;
+   background-color: #d8823f;
  }
