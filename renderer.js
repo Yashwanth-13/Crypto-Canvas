@@ -53,6 +53,38 @@ change=false
 let source=localStorage.getItem("image")
 canvas.height=400;
 canvas.width=750;
+
+
+
+
+
+var temp=50;
+var button = document.getElementById('Button');
+
+button.addEventListener('click', onClick);
+
+function changeToWhite(data) {
+  for (var i = 0; i < data.length; i+=4) {
+    data[i] +=temp;
+    data[i+1] *=1;
+    data[i+2] +=temp;
+  }
+}
+
+function onClick() {
+  var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  
+  changeToWhite(imageData.data);
+
+  // Update the canvas with the new data
+  ctx.putImageData(imageData, 0, 0);
+}
+
+
+
+
+
+
 //console.log(source)
 if(returns==1){
     //console.log(sactive);
@@ -154,11 +186,6 @@ function pictureonpicture(){
     localStorage.setItem("returns",1);
     sactive=true;
     window.location.href='POP.html';
-}
-function text(){
-    localStorage.setItem("returns",1);
-    sactive=true;
-    window.location.href='Text.html';
 }
 function secondpic(){
     console.log("ok")
@@ -311,4 +338,3 @@ function popsave(){
     sactive=true;
     window.location.href='Editor.html';
 }
-
