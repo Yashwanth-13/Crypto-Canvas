@@ -8,17 +8,15 @@
     <link rel="stylesheet" href="../css/editor.css">
 </head>
 <body>
-    <header>
-        <h1>Image Editor</h1>
-    </header>
-    <img id="background-image" src="Crypto.jpeg">
+    <h2>Image Editor</h2>
     <main>
         <div id="picture-box">  
             <canvas id="canvas" width="800" height="800" ></canvas><br>
             <input accept="image/*" type='file' name='imgInp' id="imgInp" onchange="bring()"/>
-            <label id="file-input-label" for="imgInp">select image</label><button onclick="load()">load</button>
+            <br>
+            <div class="selector"><label id="file-input-label"  for="imgInp">Select Image</label></div>
             <img id="blah" src="" width="800" style="display: none ;" />
-            <button id="download" onclick="download()">Download</button>
+        
         </div>
 
         <div id="tool-box">
@@ -26,6 +24,7 @@
             <button onclick="cropImage()" class="button1"><b>Crop</b></button>
             <button onclick="effects()" class="button1"><b>Effects</b></button>
             <button onclick="pictureonpicture()" class="button1"><b>POP</b></button>
+            <button onclick="text()" class="button1"><b>Text</b></button>
             <button onlick="share()" class="button1"><b>Share</b></button>
             <button onclick="save()" class="button2"><b>SAVE</b></button>
             <button id="download" onclick="download()" class="button1"><b>Download</b></button>
