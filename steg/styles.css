@@ -2,7 +2,7 @@ body, html {
     margin:0;
     padding:0;
     font-family:Arial,sans-serif;
-    background-color: rgb(35, 64, 71);
+    background-color: #2E1760;
     color:#f3efef;
 }
 .caed {
@@ -18,13 +18,7 @@ h1 {
     padding:20px;
     margin:auto;
 }
-#right {
-    /* position:relative;
-    float:left;
-    margin: 10px;
-    width:600px;
-    vertical-align:top; */
-}
+
 #left {
     position:relative;
     float:left;
@@ -53,42 +47,12 @@ h1 {
     margin-bottom:10px;
     padding: 0 40px;
 }
-/* .btn {
-    padding:10px 20px 10px 20px;
-    -moz-border-radius:15px;
-    -o-border-radius:15px;
-    -webkit-border-radius:15px;
-    border-radius:15px;
-    border:2px solid #FF4545;
-    cursor:pointer;
-    color:#FF4545;
-    background-color:white;
-    width:50px;
-    text-align:center;
-} */
-/* .btn:hover {
-    color:white;
-    background-color:#FF4545;
-} */
-#download {
-    /* position:absolute;
-    top:47px;
-    left:4px;
-    padding:10px 5px 5px 3px;
-    width:10px;
-    border-top:1px solid black;
-    -moz-border-radius:0 0 15px 15px;
-    -o-border-radius:0 0 15px 15px;
-    -webkit-border-radius:0 0 15px 15px;
-    border-radius:0 0 15px 15px;
-    text-decoration:none; */
+
+textarea {
+    background-color: #402c66;
+    color: #E8E0FF;
 }
-/* #download:hover {
-    width:70px;
-} */
-/* #download:hover:after {
-    content:"ownload";
-} */
+
 #description {
     line-height:25px;
     padding-bottom:5px;
@@ -118,7 +82,6 @@ textarea{
     padding:10px;
     height:200px;
     width:100%;
-    /* resize:none; */
 }
 h2{
     margin-top:0;

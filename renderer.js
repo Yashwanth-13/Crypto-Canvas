@@ -51,6 +51,7 @@ loadfilter();
 
 change=false
 let source=localStorage.getItem("image")
+<<<<<<< HEAD
 canvas.height=400;
 canvas.width=750;
 
@@ -85,6 +86,10 @@ function onClick() {
 
 
 
+=======
+canvas.height=525;
+canvas.width=850;
+>>>>>>> c55d4b4423a9adf3301d532186661b4602da0d70
 //console.log(source)
 if(returns==1){
     //console.log(sactive);
