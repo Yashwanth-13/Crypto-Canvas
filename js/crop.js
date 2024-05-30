@@ -15,6 +15,8 @@ let x=0,y=0;
 let imgInp = document.getElementById("imgInp")
 let canvas= document.getElementById("canvas")
 let ctx= canvas.getContext("2d")
+// canvas.style.height='400px';
+// canvas.style.width='750px';
 let img = new Image(),imgpop = new Image();
 let width1=0,height1=0
 let width=0,height=0
@@ -24,8 +26,11 @@ let sactive=false
 let change=false
 canvas.style.background = "black";
 sactive=false;
+let wehaveimg=false;
 
 
+canvas.height=400;
+canvas.width=750;
 let blur=0,brightness=100,contrast=100,grayscale=0,hueRotate=0,invert=0,opacity=0,saturate=100,sepia=0;
 change=localStorage.getItem("change");
 if(change){
@@ -48,6 +53,7 @@ let source=localStorage.getItem("image")
 
 img.src = source;
 img.onload = function () {
+    wehaveimg=true;
     load()
 }
 
@@ -91,6 +97,7 @@ function load(){
 }
 
 function save(){
+    if(wehaveimg)
     cropimage();
     ctx.clearRect(0,0,canvas.width,canvas.height);
     canvas.width=ow;
@@ -105,7 +112,7 @@ function save(){
     };
     localStorage.setItem("returns",2);
     sactive=true;
-    window.location.href='Editor.html';
+    window.location.href='./Editor.html';
 }
 
 function loadfilter(){

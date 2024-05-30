@@ -11,7 +11,6 @@
     <header>
         <h1>Image Editor</h1>
     </header>
-    <img id="background-image" src="Crypto.jpeg">
     <main>
         <div id="picture-box">  
             <canvas id="canvas" width="800" height="800" ></canvas><br>
@@ -34,8 +33,6 @@
             <input type="range" min="0" max="100" value="0"  id="invert" onchange="invert1()" class="invert">
             <p style="color: black;">saturate</p>
             <input type="range" min="0" max="200" value="100"  id="saturate" onchange="saturate1()" class="saturate">
-            <p style="color: black;">sepia</p>
-            <input type="range" min="0" max="100" value="0"  id="sepia" onchange="sepia1()" class="sepia">
             <button onclick="reset()">reset</button>
             <button onclick="save()">save</button>
         </div>

@@ -51,6 +51,8 @@ loadfilter();
 
 change=false
 let source=localStorage.getItem("image")
+canvas.height=400;
+canvas.width=750;
 //console.log(source)
 if(returns==1){
     //console.log(sactive);
