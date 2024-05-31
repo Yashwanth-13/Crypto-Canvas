@@ -147,6 +147,11 @@ function cropImage(){
     }
     window.location.href='Editor.html';
 }
+function reset(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.filter="brightness(100%)";
+    ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
+}
 function effects(){
     localStorage.setItem("returns",1);
     picturebox.style.width="20%";
@@ -228,11 +233,7 @@ function loadfilter(){
     ctx.filter = "blur("+blur+"px)"+"brightness("+brightness+"%)"+"contrast("+contrast+"%)"+"grayscale("+grayscale+"%)"+"invert("+invert+"%)"+ "hue-rotate("+hueRotate+"deg)"+"saturate("+saturate+"%)"+"sepia("+sepia+"%)";
     ctx.drawImage(img, 0, 0,width,height);
 }
- function reset(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.filter="brightness(100%)";
-    ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
-}
+ 
 
 function getMousePosition(canvas, event) {
     let rect = canvas.getBoundingClientRect();
@@ -333,7 +334,6 @@ function cool() {
     b = data[i + 2];
     data[i+2] =minimum(b*temp,255);
   }
-    // Update the canvas with the new data
     ctx.putImageData(imageData, 0, 0);
   }
   
@@ -341,7 +341,6 @@ function bmw() {
     ctx.filter="grayscale(100%)"
     ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
 } 
-
 function red_er() {
     ctx.filter="sepia(100%)"
     ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);

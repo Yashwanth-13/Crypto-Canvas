@@ -110,15 +110,6 @@ function read() {
 		textarea = document.getElementById("text");
 	if(img && textarea) {
 		const data_from_img = steg.decode(img)
-
-		// if (use_key) {
-		// 	const decrypted = decrypt(data_from_img, text_field.value)
-		// 	console.log(decrypted)
-		// 	message.innerHTML = decrypted
-		// } else {
-		// 	message.innerHTML = data_from_img
-		// }
-
 		message.innerHTML = data_from_img
 		if(message.innerHTML !== "") {
 			message.parentNode.className="";
