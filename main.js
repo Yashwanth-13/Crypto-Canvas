@@ -5,12 +5,12 @@ const path = require('node:path')
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    icon: './images/canvas.ico',
     width: 1920,
     height: 1080,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     },
-    icon: 'canvas.ico'
   })
 
   // and load the index.html of the app.
