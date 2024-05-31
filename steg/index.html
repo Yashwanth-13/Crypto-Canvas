@@ -21,6 +21,17 @@
                     <div class="col-md-4">
                         <h2 class="text-success">Image:</h2>
                         <input id="file" type="file"/>
+						<div class="form-check form-switch">
+							<input class="form-check-input" onclick="trigger()" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+							<label class="form-check-label" for="flexSwitchCheckDefault">Key</label>
+							<form id="form">
+								<br>
+								<input id="keyIn" type="text" style="display: none" placeholder="Your key">
+								<br>
+								<button type="submit" id="submitter" style="display: none" class="btn btn-success">Submit</button>
+							</form>
+
+						</div>
                     </div>
                     <div class="col-md-8">
                         <h2 class="text-warning">Text:<span id="capacity" style="display: none"></span></h2>

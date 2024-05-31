@@ -1,3 +1,19 @@
+
+let use_key = false
+const text_field = document.getElementById("keyIn")
+const submitter = document.getElementById("submitter")
+
+function trigger() {
+	use_key = !use_key
+	if (use_key) {
+		text_field.style.display = "block"
+		submitter.style.display = "block"
+	} else {
+		text_field.style.display = "none"
+		submitter.style.display = "none"
+	}
+}
+
 function handleFileSelect(evt) {
 	var original = document.getElementById("original"),
 		stego = document.getElementById("stego"),
