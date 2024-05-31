@@ -28,13 +28,10 @@ canvas.style.background = "black";
 sactive=false
 let picturebox=document.getElementById("picture-box");
 let returns=localStorage.getItem("returns");
-console.log(returns);
 
 let blur=0,brightness=100,contrast=100,grayscale=0,hueRotate=0,invert=0,opacity=0,saturate=100,sepia=0;
 change=localStorage.getItem("change");
-console.log(change);
 if(change){
-    //console.log("ok ");
     blur=localStorage.getItem("blur");
     brightness=localStorage.getItem("brightness");
     contrast=localStorage.getItem("contrast");
@@ -44,7 +41,6 @@ if(change){
     opacity=localStorage.getItem("opacity");
     saturate=localStorage.getItem("saturate");
     sepia=localStorage.getItem("sepia");
-    console.log(grayscale)
 }
 loadfilter();
 
@@ -58,31 +54,23 @@ canvas.width=750;
 
 canvas.height=525;
 canvas.width=850;
-//console.log(source)
 if(returns==1){
-    //console.log(sactive);
     img.src = source;
     img.onload = function () {
         load()
     }
 }
 else if(returns==2){
-    //console.log(sactive);
     frompop=localStorage.getItem("destinationImage");
+    
     img.src = frompop;
-    console.log(img.src,"\n--------------------------",frompop);
     img.onload = function () {
-        console.log("ok")
         load()
     }
 }
 function bring(){
     let [file] = imgInp.files
-    //console.log(document.getElementById("imgInp").files[0].path)
     if (file) {
-        //console.log("file")
-        img.src = document.getElementById("imgInp").files[0].path;
-        //console.log(img.src);
         img.onload = function () {
             ctx.clearRect(0,0,canvas.width,canvas.height);
             load(img)
@@ -102,7 +90,6 @@ function load(){
         canvas.height=height;
         loadfilter();
         ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
-        //console.log(width,height)
     }
     else{
         height=600
@@ -111,8 +98,6 @@ function load(){
         canvas.height=height;
         loadfilter();
         ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
-        console.log(ctx.filter)
-        //console.log(width,height)
     }
     localStorage.setItem("image",img.src);
 }
@@ -126,13 +111,14 @@ function download() {
     canvas.height = img.naturalHeight;
     let ctx = canvas.getContext("2d");
     ctx.filter = "blur("+blur+"px)"+"brightness("+brightness+"%)"+"contrast("+contrast+"%)"+"grayscale("+grayscale+"%)"+"invert("+invert+"%)"+ "hue-rotate("+hueRotate+"deg)"+"saturate("+saturate+"%)"+"sepia("+sepia+"%)";
-    //console.log(blur,brightness,contrast,grayscale,hueRotate,invert,opacity,saturate,sepia);
     ctx.drawImage(img, 0, 0);
     let a = document.createElement("a");
     a.href = canvas.toDataURL();
     a.download = "image.png";
     a.click();
+    
 }
+
 
 function applyFilter(){
     localStorage.setItem("returns",1);
@@ -170,18 +156,14 @@ function pictureonpicture(){
     window.location.href='POP.html';
 }
 function secondpic(){
-    console.log("ok")
     let [file] = imgpop1.files
     if (file) {
-        console.log("ok")
         imgpop.src = document.getElementById("imgpop1").files[0].path;
         imgpop.onload = function () {
-            console.log("ok")
             ctx.clearRect(0,0,canvas.width,canvas.height);
             load(); 
             popwidth = imgpop.naturalWidth;
             popheight = imgpop.naturalHeight;
-            //console.log(popwidth,popheight);
                 height1=popheight
                 width1=popwidth
                 ratio=popwidth/popheight
@@ -189,13 +171,11 @@ function secondpic(){
                     popwidth=800;
                     popheight=800/ratio;
                     ctx.drawImage(imgpop, 0, 0,width1,height1,x,y,popwidth,popheight);
-                    //console.log(popwidth,popheight)
                 }
                 else{
                     popheight=600
                     popwidth=600*ratio
                     ctx.drawImage(imgpop, 0, 0,width1,height1,x,y,popwidth,popheight);
-                    //console.log(popwidth,popheight)
                 }
             
         }
@@ -244,19 +224,11 @@ function loadfilter(){
     localStorage.setItem("change",true);
     ctx.filter = "blur("+blur+"px)"+"brightness("+brightness+"%)"+"contrast("+contrast+"%)"+"grayscale("+grayscale+"%)"+"invert("+invert+"%)"+ "hue-rotate("+hueRotate+"deg)"+"saturate("+saturate+"%)"+"sepia("+sepia+"%)";
     ctx.drawImage(img, 0, 0,width,height);
-    //console.log(ctx.filter)
 }
  function reset(){
-    blur=0,brightness=100,contrast=100,grayscale=0,hueRotate=0,invert=0,opacity=0,saturate=100,sepia=0;
-    document.getElementById("blur").value=0;
-    document.getElementById("brightness").value=100;
-    document.getElementById("contrast").value=100;
-    document.getElementById("grayscale").value=0;
-    document.getElementById("hue-rotate").value=0;
-    document.getElementById("invert").value=0;
-    document.getElementById("saturate").value=100;
-    loadfilter();
-    back()
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.filter="brightness(100%)";
+    ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
 }
 
 function getMousePosition(canvas, event) {
@@ -311,7 +283,6 @@ function popsave(){
     let destinationImage = new Image();
     destinationImage.src = imageee;
     destinationImage.onload = function(){
-        console.log(destinationImage);
         localStorage.setItem("destinationImage",destinationImage.src);
     };
     localStorage.setItem("returns",2);
@@ -319,11 +290,12 @@ function popsave(){
     window.location.href='Editor.html';
 }
 
-
-function warm  (){
-    
+function share(){
+    var share=document.getElementById("share");
+    share.style.display="none";
+    var sharebox=document.getElementById("sharebox");
+    sharebox.style.display="flex";
 }
-
 
 var temp=1.1;
 function minimum(a,b){
@@ -345,10 +317,10 @@ function warm() {
   }
     // Update the canvas with the new data
     ctx.putImageData(imageData, 0, 0);
-  }
+}
   
 
-  function cool() {
+function cool() {
     var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var data=imageData.data;
     var r,b,g;
@@ -363,18 +335,12 @@ function warm() {
   }
   
 function bmw() {
-    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     ctx.filter="grayscale(100%)"
     ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
 } 
 
 function red_er() {
-    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     ctx.filter="sepia(100%)"
     ctx.drawImage(img, 0, 0,width1,height1,0,0,width,height);
-}
-  
-function theunwanted(){
-    
 }
     
