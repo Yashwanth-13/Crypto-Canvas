@@ -1,9 +1,9 @@
 body, html {
     margin:0;
     padding:0;
-    font-family:Arial,sans-serif;
     background-color: rgb(35, 64, 71);
     color:#f3efef;
+    font-family: "Nunito", sans-serif;
 }
 .caed {
     background-color: rgb(35, 64, 71);   
