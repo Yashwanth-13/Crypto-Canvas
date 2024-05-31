@@ -1,3 +1,4 @@
+
 		function handleFileSelect(evt) {
 			var original = document.getElementById("original"),
 				stego = document.getElementById("stego"),
@@ -82,8 +83,6 @@
 					updateCapacity();
 				}
 			}
-		}
-
 		function updateCapacity() {
 			var img = document.getElementById('img'),
 				textarea = document.getElementById('text');
