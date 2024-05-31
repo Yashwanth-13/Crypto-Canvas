@@ -69,6 +69,17 @@ function copyText(){
 	btnText.innerText = "Copied!";
 }
 
+// async function converter(str, key, cover, img) {
+// 	console.log(str, key)
+// 	const encrypted = await encrypt(str, key)
+// 	const to_hide = new Uint8Array(encrypted)
+// 	const decoder = new TextDecoder("utf-8")
+// 	let converted_str = decoder.decode(to_hide)
+// 	console.log(converted_str)
+// 	cover.src = steg.encode(converted_str, img)
+// 	console.log('ig done')
+// }
+
 function hide() {
 	var stego = document.getElementById("stego"),
 		img = document.getElementById("img"),
@@ -77,11 +88,18 @@ function hide() {
 		textarea = document.getElementById("text"),
 		download = document.getElementById("download");
 	if(img && textarea) {
+		// if (use_key) {
+		// 	const encrypted = converter(textarea.value, text_field.value, cover, img)
+		// } else {
+		// 	cover.src = steg.encode(textarea.value, img);
+		// }
 		cover.src = steg.encode(textarea.value, img);
 		stego.className = "half";
 		message.innerHTML="";
 		message.parentNode.className="invisible";
 		download.href=cover.src.replace("image/png", "image/octet-stream");
+		download.click()
+		window.location.reload()
 	}
 }
 
@@ -91,7 +109,17 @@ function read() {
 		message = document.getElementById("message"),
 		textarea = document.getElementById("text");
 	if(img && textarea) {
-		message.innerHTML = steg.decode(img);
+		const data_from_img = steg.decode(img)
+
+		// if (use_key) {
+		// 	const decrypted = decrypt(data_from_img, text_field.value)
+		// 	console.log(decrypted)
+		// 	message.innerHTML = decrypted
+		// } else {
+		// 	message.innerHTML = data_from_img
+		// }
+
+		message.innerHTML = data_from_img
 		if(message.innerHTML !== "") {
 			message.parentNode.className="";
 			textarea.value = message.innerHTML;

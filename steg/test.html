@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test to encrypt/decrypt</title>
+    <script>
+        async function run() {
+            const password = 'user_provided_key';
+            const data = 'Sensitive data that needs encryption';
+
+            // encrypt here
+            const encryptedData = await encrypt(data, password);
+            console.log('Encrypted Data:', new Uint8Array(encryptedData));
+
+            // decrypt here
+            const decryptedData = await decrypt(encryptedData, password);
+            console.log('Decrypted Data:', decryptedData);
+        }
+    </script>
+    <script src="./js/crypt.js"></script>
+</head>
+<body onload="run()">
+</body>
+</html>
