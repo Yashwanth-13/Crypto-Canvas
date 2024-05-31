@@ -78,11 +78,8 @@ else if(returns==2){
 }
 function bring(){
     let [file] = imgInp.files
-    //console.log(document.getElementById("imgInp").files[0].path)
     if (file) {
-        //console.log("file")
         img.src = document.getElementById("imgInp").files[0].path;
-        //console.log(img.src);
         img.onload = function () {
             ctx.clearRect(0,0,canvas.width,canvas.height);
             load(img)
@@ -125,8 +122,9 @@ function download() {
     canvas.width = img.naturalWidth;
     canvas.height = img.naturalHeight;
     let ctx = canvas.getContext("2d");
-    ctx.filter = "blur("+blur+"px)"+"brightness("+brightness+"%)"+"contrast("+contrast+"%)"+"grayscale("+grayscale+"%)"+"invert("+invert+"%)"+ "hue-rotate("+hueRotate+"deg)"+"saturate("+saturate+"%)"+"sepia("+sepia+"%)";
-    //console.log(blur,brightness,contrast,grayscale,hueRotate,invert,opacity,saturate,sepia);
+    ctx.filter = "blur("+blur+"px)"+"brightness("+brightness+"%)"+"contrast("+contrast+"%)"+
+        "grayscale("+grayscale+"%)"+"invert("+invert+"%)"+ "hue-rotate("+hueRotate+"deg)"+
+        "saturate("+saturate+"%)"+"sepia("+sepia+"%)";
     ctx.drawImage(img, 0, 0);
     let a = document.createElement("a");
     a.href = canvas.toDataURL();

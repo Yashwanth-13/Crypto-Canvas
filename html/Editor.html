@@ -12,13 +12,13 @@
 <body>
     <h2>Image Editor</h2>
     <main style="align-items: center">
+
         <div id="picture-box">  
             <canvas id="canvas" width="800" height="800" ></canvas><br>
             <input accept="image/*" type='file' name='imgInp' id="imgInp" onchange="bring()"/>
             <br>
             <div class="selector"><label id="file-input-label" for="imgInp"><b>Select Image</b></label></div>
-            <img id="blah" src="" width="800" style="display: none ;" />
-        
+            <img id="img" src="" width="800" style="display: none ;" />
         </div>
 
         <div id="tool-box">
@@ -27,7 +27,7 @@
             <button onclick="effects()" class="button1"><b>Effects</b></button>
             <button onclick="pictureonpicture()" class="button1"><b>POP</b></button>
             <button onclick="share()" class="button1"><b>Share</b></button>
-            <button id="download" onclick="download()" class="button1"><b>Download</b></button>
+            <button onclick="download()" id="download" class="button1"><b>Download</b></button>
             <button onclick="index()" class="button2"><b>HOME</b></button>
         </div>
         <script>
