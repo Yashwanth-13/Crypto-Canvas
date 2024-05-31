@@ -13,7 +13,11 @@ h1 {
     margin-bottom:10px;
 }
 
-textarea {
+#submitter {
+    font-size: 10px;
+}
+
+#keyIn, textarea {
     color: #E8985E;
     border-radius: 10px;
     background-color: #0f1637;
