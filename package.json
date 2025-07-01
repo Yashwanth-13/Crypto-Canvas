@@ -27,7 +27,7 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron/fuses": "^1.8.0",
-    "electron": "^28.2.2"
+    "electron": "^28.3.2"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
